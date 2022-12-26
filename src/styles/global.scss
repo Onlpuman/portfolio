@@ -1,0 +1,31 @@
+:root {
+  --blackpure: #000;
+  --black: #171718;
+  --black-border: #26292d;
+  --white: #fff;
+  --purple: #5c62ec;
+  --text-color: var(--black);
+  --dark-bg: var(--black);
+  --dark-border: var(--black-border);
+  --header-text: var(--white);
+  --accent: var(--purple);
+
+  /* Light mode */
+  --page-bg: var(--white);
+  --text-color: var(--black);
+  --title-1: var(--accent);
+  --project-card-bg: var(--white);
+  --project-card-text: var(--black);
+  --box-shadow: 0 5px 35px rgb(0 0 0 / 25%);
+}
+
+html,
+body {
+  height: 100%;
+  letter-spacing: -0.5px;
+  font-family: "DM Sans", sans-serif;
+}
+
+#__next {
+  height: 100%;
+}
