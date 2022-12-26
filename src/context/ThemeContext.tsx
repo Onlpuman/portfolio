@@ -12,16 +12,18 @@ type ThemeProviderProps = {
 type ValueType = {
 	isDarkTheme: boolean;
 	setIsDarkTheme: React.Dispatch<React.SetStateAction<boolean>>
+	pathFromServer: string,
 }
 
 export const ThemeContext = createContext<ValueType>({} as ValueType);
 
-const ThemeProvider: FC<ThemeProviderProps> = ({ children, isDarkMode }) => {
+const ThemeProvider: FC<ThemeProviderProps> = ({ children, isDarkMode, pathFromServer }) => {
 	const [isDarkTheme, setIsDarkTheme] = useState<boolean>(isDarkMode);
 	
 	const value: ValueType = {
 		isDarkTheme,
 		setIsDarkTheme,
+		pathFromServer,
 	};
 	
 	const cookies = new Cookies();
