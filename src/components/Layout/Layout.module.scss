@@ -1,0 +1,22 @@
+.app__wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+
+	background-color: var(--page-bg);
+	color: var(--text-color);
+}
+
+.dark {
+	/* Dark mode */
+	--page-bg: #252526;
+	--text-color: var(--white);
+	--title-1: var(--white);
+	--project-card-bg: var(--black);
+	--project-card-text: var(--white);
+	--box-shadow: 0 5px 35px rgb(0 0 0 / 80%);
+}
+
+.main {
+	flex: 1 1 auto;
+}
