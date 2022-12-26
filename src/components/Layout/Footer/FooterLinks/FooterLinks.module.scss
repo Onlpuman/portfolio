@@ -1,0 +1,19 @@
+.social {
+  display: flex;
+  column-gap: 30px;
+  align-items: center;
+
+  .item {
+    width: 38px;
+  }
+}
+
+@media (max-width: 620px) {
+  .social {
+    column-gap: 20px;
+
+    .item {
+      width: 28px;
+    }
+  }
+}
