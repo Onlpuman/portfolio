@@ -5,6 +5,8 @@ import clsx from 'clsx';
 import { ThemeContext } from '../../context/ThemeContext';
 
 import styles from './Layout.module.scss';
+import Footer from './Footer/Footer';
+import { Navbar } from './Navbar/Navbar';
 
 type layoutProps = {
 	children: ReactNode,
@@ -23,7 +25,9 @@ const Layout:FC<layoutProps> = ({ children }) => {
 				[styles.app__wrapper]: true,
 				[styles.dark]: isDarkTheme,
 			})}>
+				<Navbar />
 				<main className={styles.main}>{children}</main>
+				<Footer />
 			</div>
 		</>
 	);
