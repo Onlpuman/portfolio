@@ -1,0 +1,37 @@
+.list {
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: 10px;
+	align-items: center;
+	column-gap: 40px;
+
+	font-size: 16px;
+	font-weight: 500;
+	font-family: 'Poppins', sans-serif;
+
+	.link {
+		color: var(--header-text);
+		transition: opacity 0.2s ease-in;
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		&__active {
+			position: relative;
+		}
+
+		&__active::before {
+			content: "";
+
+			position: absolute;
+			left: 0;
+			top: 100%;
+
+			display: block;
+			height: 2px;
+			width: 100%;
+			background-color: var(--accent);
+		}
+	}
+}
