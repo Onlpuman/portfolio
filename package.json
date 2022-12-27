@@ -15,7 +15,8 @@
     "react-dom": "18.2.0",
     "sass": "^1.56.2",
     "sharp": "^0.31.3",
-    "universal-cookie": "^4.0.4"
+    "universal-cookie": "^4.0.4",
+    "use-isomorphic-layout-effect": "^1.1.2"
   },
   "devDependencies": {
     "@types/node": "18.11.15",
