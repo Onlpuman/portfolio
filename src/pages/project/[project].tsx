@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 
 import { IProjects } from '../../../models';
@@ -29,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 const Project: NextPage<projectProps> = ({ project }) => {
 	if (!project) return null;
-	const { title, skills, img } = project;
+	const { title, skills, img, url } = project;
 	
 	return (
 		<section className={styles.section}>
@@ -55,6 +56,11 @@ const Project: NextPage<projectProps> = ({ project }) => {
 					<div className={styles.desc}>
 						<p>Skills: {skills}</p>
 					</div>
+					
+					<Link href={url} className={styles.btn}>
+						<Image src="/icons/gitHub_black.svg" alt="Github icon" width={24} height={24}/>
+						GitHub Pages
+					</Link>
 				</div>
 			</div>
 		</section>
