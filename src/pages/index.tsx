@@ -13,7 +13,7 @@ type projectProps = {
 export const getServerSideProps: GetServerSideProps = async () => {
 	try {
 		const res = await fetch(`${process.env.API_HOST}/projects/`);
-		const data:IProjects[] = await res.json();
+		const data: IProjects[] = await res.json();
 		
 		return {
 			props: { projects: data },
