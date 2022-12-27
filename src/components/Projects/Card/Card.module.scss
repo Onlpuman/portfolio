@@ -4,6 +4,40 @@
 	box-shadow: var(--box-shadow);
 	border-radius: 10px;
 
+	.palladiumlab-img-cover,
+	.puzzle-img-cover,
+	.glacy-img-cover,
+	.pokemon-img-cover,
+	.finkit-img-cover,
+	.hexteam-img-cover, {
+		padding: 7%;
+		border-radius: 6px;
+	}
+
+	.palladiumlab-img-cover {
+		background-color: #ADCEAA;
+	}
+
+	.puzzle-img-cover {
+		background-color: #DBC8EA;
+	}
+
+	.glacy-img-cover {
+		background-color: #F6F5F8;
+	}
+
+	.pokemon-img-cover {
+		background-color: #4A4F74;
+	}
+
+	.hexteam-img-cover {
+		background-color: #737A85;
+	}
+
+	.finkit-img-cover {
+		background-color: #302B46;
+	}
+
 	.img {
 		width: 100%;
 		border-radius: 10px;
@@ -16,40 +50,6 @@
 		line-height: 1.3;
 		color: var(--project-card-text);
 	}
-}
-
-.palladiumlab__wrapper,
-.puzzle__wrapper,
-.glacy__wrapper,
-.pokemon__wrapper,
-.finkit__wrapper,
-.hexteam__wrapper, {
-	padding: 26px;
-	border-radius: 6px;
-}
-
-.palladiumlab__wrapper {
-	background-color: #ADCEAA; //#ADCEAA
-}
-
-.puzzle__wrapper {
-	background-color: #DBC8EA; //#DBC8EA;
-}
-
-.glacy__wrapper {
-	background-color: #F6F5F8; //#F6F5F8
-}
-
-.pokemon__wrapper {
-	background-color: #4A4F74;
-}
-
-.hexteam__wrapper {
-	background-color: #737A85;
-}
-
-.finkit__wrapper {
-	background-color: #302B46; //#302B46
 }
 
 @media (max-width: 620px) {

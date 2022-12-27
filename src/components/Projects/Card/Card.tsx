@@ -12,12 +12,12 @@ type cardProps = {
 
 const Card: FC<cardProps> = ({ project }) => {
 	const { name, description, path, img } = project || {};
-	const styleWrapper = name + '__wrapper';
+	const styleImgCover = name + '-img-cover';
 	
 	return (
 		<li className={styles.card}>
 			<Link href={path}>
-				<div className={styles[styleWrapper]}>
+				<div className={styles[styleImgCover]}>
 					<Image className={styles.img} src={img[0]} priority={true} alt="Card img" width={324} height={232}/>
 				</div>
 				<h3 className={styles.title}>{description}</h3>
