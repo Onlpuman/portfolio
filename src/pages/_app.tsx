@@ -23,20 +23,26 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 };
 
 MyApp.getInitialProps = async ({ ctx }: serverProps) => {
-	const cookie = ctx?.req?.headers?.cookie?.match(/isDarkMode=(\w+);?/)?.[1];
-	const isDarkMode =
-		cookie === undefined
-			? false
-			: JSON.parse(cookie);
-	
-	const pathFromServer = ctx.pathname;
-	
-	return {
-		pageProps: {
-			pathFromServer,
-			isDarkMode,
-		},
-	};
+	try {
+		const cookie = ctx?.req?.headers?.cookie?.match(/isDarkMode=(\w+);?/)?.[1];
+		const pathFromServer = ctx.pathname;
+		
+		const isDarkMode =
+			cookie === undefined
+				? false
+				: JSON.parse(cookie);
+		
+		return {
+			pageProps: {
+				pathFromServer,
+				isDarkMode,
+			},
+		};
+	} catch {
+		return {
+			pageProps: { null: null },
+		};
+	}
 };
 
 export default MyApp;
