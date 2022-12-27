@@ -31,15 +31,38 @@
 	.cover {
 		max-width: 100%;
 		margin-bottom: 40px;
-		padding: 44px;
+		padding: 5%;
 
 		box-shadow: 0 5px 35px rgba(0, 0, 0, 0.25);
 		border-radius: 10px;
-		background-color: #F6F6F8;
 
 		.img {
 			border-radius: 10px;
 		}
+	}
+
+	.palladiumlab-img-cover {
+		background-color: #ADCEAA;
+	}
+
+	.puzzle-img-cover {
+		background-color: #DBC8EA;
+	}
+
+	.glacy-img-cover {
+		background-color: #F6F5F8;
+	}
+
+	.pokemon-img-cover {
+		background-color: #4A4F74;
+	}
+
+	.hexteam-img-cover {
+		background-color: #737A85;
+	}
+
+	.finkit-img-cover {
+		background-color: #302B46;
 	}
 
 	.desc {
@@ -74,6 +97,7 @@
 			top: 1px;
 		}
 	}
+
 }
 
 @media (max-width: 620px) {

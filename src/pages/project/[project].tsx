@@ -1,8 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useContext } from 'react';
 import { GetServerSideProps } from 'next';
+import clsx from 'clsx';
 
 import { IProjects } from '../../../models';
+import { ThemeContext } from '../../context/ThemeContext';
 
 import styles from './project.module.scss';
 
@@ -29,8 +32,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 };
 
 const Project: NextPage<projectProps> = ({ project }) => {
+	const { isDarkTheme } = useContext(ThemeContext);
 	if (!project) return null;
-	const { title, skills, img, url } = project;
+	const { name, title, skills, img, url } = project;
+	const styleImgCover = name + '-img-cover';
 	
 	return (
 		<section className={styles.section}>
@@ -40,7 +45,15 @@ const Project: NextPage<projectProps> = ({ project }) => {
 					<h1 className={styles.title}>{title}</h1>
 					
 					{img.map(el => (
-						<div className={styles.cover} key={el}>
+						<div
+							className={
+								clsx({
+									[styles.cover]: true,
+									[styles[styleImgCover]]: isDarkTheme,
+								})
+							}
+							key={el}
+						>
 							<Image
 								className={styles.img}
 								src={el}
