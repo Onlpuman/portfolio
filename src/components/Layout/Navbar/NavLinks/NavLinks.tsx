@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { FC, useContext, useLayoutEffect, useState } from 'react';
 import clsx from 'clsx';
 
-import { navLinks} from '../../layoutData/layoutData';
+import { navLinks } from '../../../../../data/data';
 import { ThemeContext } from '../../../../context/ThemeContext';
 import { isServer } from '../../../../helpers/isServer';
 

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
-import { footerLinks } from '../../layoutData/layoutData';
+import { footerLinks } from '../../../../../data/data';
 
 import styles from './FooterLinks.module.scss';
 
