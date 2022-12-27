@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { FC, useContext, useLayoutEffect, useState } from 'react';
+import { FC, useContext, useState } from 'react';
 import clsx from 'clsx';
+import useIsomorphicLayoutEffect from 'use-isomorphic-layout-effect';
 
 import { navLinks } from '../../../../../data/data';
 import { ThemeContext } from '../../../../context/ThemeContext';
-import { isServer } from '../../../../helpers/isServer';
 
 import styles from './NavLinks.module.scss';
 
@@ -12,11 +12,9 @@ const NavLinks:FC = () => {
 	const { pathFromServer } = useContext(ThemeContext);
 	const [activeLinkId, setActiveLinkId] = useState<number | null>(null);
 	
-	useLayoutEffect(() => {
-		if (!isServer()) {
-			const currentPageID = navLinks.findIndex((el) => el.path === pathFromServer);
-			setActiveLinkId(currentPageID + 1);
-		}
+	useIsomorphicLayoutEffect(() => {
+		const currentPageID = navLinks.findIndex((el) => el.path === pathFromServer);
+		setActiveLinkId(currentPageID + 1);
 	},[pathFromServer]);
 	
 	return (

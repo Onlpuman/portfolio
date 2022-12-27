@@ -1,7 +1,6 @@
-import React, { createContext, FC, ReactNode, useEffect, useLayoutEffect, useState } from 'react';
+import React, {createContext, FC, ReactNode, useEffect, useState} from 'react';
 import Cookies from 'universal-cookie';
-
-import { isServer } from '../helpers/isServer';
+import useIsomorphicLayoutEffect from 'use-isomorphic-layout-effect';
 
 type ThemeProviderProps = {
 	children: ReactNode,
@@ -17,7 +16,7 @@ type ValueType = {
 
 export const ThemeContext = createContext<ValueType>({} as ValueType);
 
-const ThemeProvider: FC<ThemeProviderProps> = ({ children, isDarkMode, pathFromServer }) => {
+const ThemeProvider: FC<ThemeProviderProps> = ({children, isDarkMode, pathFromServer}) => {
 	const [isDarkTheme, setIsDarkTheme] = useState<boolean>(isDarkMode);
 	
 	const value: ValueType = {
@@ -34,28 +33,24 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, isDarkMode, pathFromS
 		});
 	};
 	
-	useLayoutEffect(() => {
-		if (!isServer()) {
-			const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+	useIsomorphicLayoutEffect(() => {
+		const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+		
+		const funcListener = (e: MediaQueryListEvent) => {
+			const isUserDarkTheme = e.matches;
+			isUserDarkTheme
+				? sendCookieTheme(true)
+				: sendCookieTheme(false);
 			
-			const funcListener = (e: MediaQueryListEvent) => {
-				const isUserDarkTheme = e.matches;
-				isUserDarkTheme
-					? sendCookieTheme(true)
-					: sendCookieTheme(false);
-				
-				setIsDarkTheme(isUserDarkTheme);
-			};
-			
-			mediaQueryList.addEventListener('change', funcListener);
-		}
+			setIsDarkTheme(isUserDarkTheme);
+		};
+		
+		mediaQueryList.addEventListener('change', funcListener);
 		//return () => .removeEventListener('change', funcListener);
 	}, []);
 	
 	useEffect(() => {
-		if (!isServer()) {
-			sendCookieTheme(isDarkTheme);
-		}
+		sendCookieTheme(isDarkTheme);
 	}, [isDarkTheme]);
 	
 	return (
@@ -65,4 +60,4 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, isDarkMode, pathFromS
 	);
 };
 
-export { ThemeProvider };
+export {ThemeProvider};
