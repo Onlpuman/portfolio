@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { GetServerSideProps } from 'next';
 
 import { IProjects } from '../../../models';
@@ -12,7 +13,11 @@ type projectProps = {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	try {
-		const currentProject = {};
+		const res = await fetch(`${process.env.API_HOST}/projects/`);
+		const data = await res.json();
+		
+		const currentPath = ctx.params?.project;
+		const currentProject = data.find((el: IProjects) => el.name === currentPath);
 		
 		return {
 			props: { project: currentProject },
@@ -22,17 +27,33 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	}
 };
 
-const Project: NextPage<projectProps> = () => {
+const Project: NextPage<projectProps> = ({ project }) => {
+	if (!project) return null;
+	const { title, skills, img } = project;
 	
 	return (
 		<section className={styles.section}>
 			<div className={styles.container}>
 				<div className={styles.details}>
 					
-					<h1 className={styles.title}>title</h1>
+					<h1 className={styles.title}>{title}</h1>
+					
+					{img.map(el => (
+						<div className={styles.cover} key={el}>
+							<Image
+								className={styles.img}
+								src={el}
+								alt="Project image"
+								priority={true}
+								quality={100}
+								width={1920}
+								height={956}
+							/>
+						</div>
+					))}
 					
 					<div className={styles.desc}>
-						<p>Skills:</p>
+						<p>Skills: {skills}</p>
 					</div>
 				</div>
 			</div>
