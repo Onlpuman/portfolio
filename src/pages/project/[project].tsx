@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import { IProjects } from '../../../models';
 import { ThemeContext } from '../../context/ThemeContext';
 
-import styles from './project.module.scss';
+import styles from './Project.module.scss';
 
 import type { NextPage } from 'next';
 
