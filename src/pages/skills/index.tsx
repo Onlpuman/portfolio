@@ -4,7 +4,7 @@ import { skills } from '../../../data/data';
 
 import styles from './Skills.module.scss';
 
-const Skills: NextPage = () => (
+const Skills:NextPage = () => (
 	<section className={styles.section}>
 		<div className={styles.container}>
 			<h1 className={styles.title_1}>Skills</h1>

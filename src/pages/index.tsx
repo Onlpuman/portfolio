@@ -10,7 +10,7 @@ type projectProps = {
 	projects: [IProjects],
 }
 
-const Projects: NextPage<projectProps> = ({ projects }) => {
+const Projects:NextPage<projectProps> = ({ projects }) => {
 	if (!projects) return null;
 	
 	return (
@@ -30,7 +30,7 @@ const Projects: NextPage<projectProps> = ({ projects }) => {
 	);
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps:GetServerSideProps = async (ctx) => {
 	try {
 		const { req } = ctx;
 		const url = `${req?.headers.host === 'localhost:3000' ? 'http' : 'https'}://${req?.headers.host}/api/projects`;

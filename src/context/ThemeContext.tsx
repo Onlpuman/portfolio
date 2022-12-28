@@ -1,4 +1,4 @@
-import React, {createContext, FC, ReactNode, useEffect, useState} from 'react';
+import React, { createContext, FC, ReactNode, useEffect, useState } from 'react';
 import Cookies from 'universal-cookie';
 import useIsomorphicLayoutEffect from 'use-isomorphic-layout-effect';
 
@@ -16,7 +16,7 @@ type ValueType = {
 
 export const ThemeContext = createContext<ValueType>({} as ValueType);
 
-const ThemeProvider: FC<ThemeProviderProps> = ({children, isDarkMode, pathFromServer}) => {
+const ThemeProvider: FC<ThemeProviderProps> = ({ children, isDarkMode, pathFromServer }) => {
 	const [isDarkTheme, setIsDarkTheme] = useState<boolean>(isDarkMode);
 	
 	const value: ValueType = {

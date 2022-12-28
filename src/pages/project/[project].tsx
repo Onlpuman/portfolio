@@ -15,7 +15,7 @@ type projectProps = {
 	project: IProjects,
 }
 
-const Project: NextPage<projectProps> = ({ project }) => {
+const Project:NextPage<projectProps> = ({ project }) => {
 	const { isDarkTheme } = useContext(ThemeContext);
 	if (!project) return null;
 	const { name, title, skills, img, url } = project;
@@ -64,7 +64,7 @@ const Project: NextPage<projectProps> = ({ project }) => {
 	);
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps:GetServerSideProps = async (ctx) => {
 	try {
 		const { req, params } = ctx;
 		const currentPath = params?.project;
