@@ -10,19 +10,6 @@ type projectProps = {
 	projects: [IProjects],
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-	try {
-		const res = await fetch(`${process.env.API_HOST}/projects/`);
-		const data: IProjects[] = await res.json();
-		
-		return {
-			props: { projects: data },
-		};
-	} catch (error) {
-		return { notFound: true };
-	}
-};
-
 const Projects: NextPage<projectProps> = ({ projects }) => {
 	if (!projects) return null;
 	
@@ -41,6 +28,22 @@ const Projects: NextPage<projectProps> = ({ projects }) => {
 			</section>
 		</>
 	);
+};
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+	try {
+		const { req } = ctx;
+		const url = `${req?.headers.host === 'localhost:3000' ? 'http' : 'https'}://${req?.headers.host}/api/projects`;
+		
+		const res = await fetch(url);
+		const data: IProjects[] = await res.json();
+		
+		return {
+			props: { projects: data },
+		};
+	} catch (error) {
+		return { notFound: true };
+	}
 };
 
 export default Projects;

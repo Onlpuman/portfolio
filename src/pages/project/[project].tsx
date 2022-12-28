@@ -15,22 +15,6 @@ type projectProps = {
 	project: IProjects,
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-	try {
-		const res = await fetch(`${process.env.API_HOST}/projects/`);
-		const data = await res.json();
-		
-		const currentPath = ctx.params?.project;
-		const currentProject = data.find((el: IProjects) => el.name === currentPath);
-		
-		return {
-			props: { project: currentProject },
-		};
-	} catch (error) {
-		return { notFound: true };
-	}
-};
-
 const Project: NextPage<projectProps> = ({ project }) => {
 	const { isDarkTheme } = useContext(ThemeContext);
 	if (!project) return null;
@@ -78,6 +62,24 @@ const Project: NextPage<projectProps> = ({ project }) => {
 			</div>
 		</section>
 	);
+};
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+	try {
+		const { req, params } = ctx;
+		const currentPath = params?.project;
+		const url = `${req?.headers.host === 'localhost:3000' ? 'http' : 'https'}://${req?.headers.host}/api/projects`;
+		
+		const res = await fetch(url);
+		const data: IProjects[] = await res.json();
+		const currentProject = data.find((el) => el.name === currentPath);
+		
+		return {
+			props: { project: currentProject },
+		};
+	} catch (error) {
+		return { notFound: true };
+	}
 };
 
 export default Project;

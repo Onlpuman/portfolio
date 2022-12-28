@@ -1,0 +1,64 @@
+[
+  {
+    "id": 0,
+    "name": "palladiumlab",
+    "description": "Landing",
+    "title": "Room repair service",
+    "skills": "HTML, SCSS, JS, BEM",
+    "path": "project/palladiumlab",
+    "img": ["/projects/palladiumlab.png", "/projects/palladiumlab_2.png"],
+    "url": "https://onlpuman.github.io/palladiumlab"
+  },
+  {
+    "id": 1,
+    "name": "puzzle",
+    "description": "SPA Game",
+    "title": "Classic game \"15 puzzle\"",
+    "skills": "React, Redux, React Bootstrap, TypeScript",
+    "path": "project/puzzle",
+    "img": ["/projects/puzzle.png"],
+    "url": "https://onlpuman.github.io/15puzzle"
+  },
+  {
+    "id": 2,
+    "name": "glacy",
+    "description": "Site",
+    "title": "Ice cream shop",
+    "skills": "HTML, SCSS, JS, BEM",
+    "path": "project/glacy",
+    "img": ["/projects/glacy.png", "/projects/glacy_2.png"],
+    "url": "https://onlpuman.github.io/glacy"
+
+  },
+  {
+    "id": 3,
+    "name": "pokemon",
+    "description": "Site",
+    "title": "Pokemon list",
+    "skills": "React, Redux, React-router, React Bootstrap, Rest API",
+    "path": "project/pokemon",
+    "img": ["/projects/pokemon.png"],
+    "url": "https://onlpuman.github.io/pokemon-list"
+
+  },
+  {
+    "id": 4,
+    "name": "hexteam",
+    "description": "Admin panel",
+    "title": "Link Shortening Service",
+    "skills": "React, React Bootstrap, React Router, Axios",
+    "path": "project/hexteam",
+    "img": ["/projects/hexteam.png", "/projects/hexteam_2.png"],
+    "url": "https://github.com/Onlpuman/hexteam"
+  },
+  {
+    "id": 5,
+    "name": "finkit",
+    "description": "Landing",
+    "title": "Investment services",
+    "skills": "HTML, SCSS, JS, BEM",
+    "path": "project/finkit",
+    "img": ["/projects/finkit.png", "/projects/finkit_2.png"],
+    "url": "https://github.com/Onlpuman"
+  }
+]
