@@ -43,9 +43,9 @@ const Project:NextPage<projectProps> = ({ project }) => {
 								src={el}
 								alt="Project image"
 								priority={true}
-								quality={100}
-								width={1920}
-								height={956}
+								quality={85}
+								width={776}
+								height={388}
 							/>
 						</div>
 					))}
@@ -73,7 +73,7 @@ export const getServerSideProps:GetServerSideProps = async (ctx) => {
 		const res = await fetch(url);
 		const data: IProjects[] = await res.json();
 		const currentProject = data.find((el) => el.name === currentPath);
-		
+	
 		return {
 			props: { project: currentProject },
 		};
