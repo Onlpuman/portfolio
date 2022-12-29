@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useContext } from 'react';
+import {useContext } from 'react';
 import { GetServerSideProps } from 'next';
 import clsx from 'clsx';
 
