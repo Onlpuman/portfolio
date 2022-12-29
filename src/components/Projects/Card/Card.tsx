@@ -22,9 +22,10 @@ const Card:FC<cardProps> = ({ project }) => {
 						className={styles.img}
 						src={img[0]}
 						priority={true}
-						alt="Card img"
 						width={324}
-						height={232}/>
+						height={160}
+						alt="Card img"
+					/>
 				</div>
 				<h3 className={styles.title}>{description}</h3>
 			</Link>
