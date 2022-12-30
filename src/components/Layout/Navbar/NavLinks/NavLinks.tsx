@@ -3,7 +3,7 @@ import { FC, useContext, useState } from 'react';
 import clsx from 'clsx';
 import useIsomorphicLayoutEffect from 'use-isomorphic-layout-effect';
 
-import { navLinks } from '../../../../../data/data';
+import { navLinks} from '../../../../../public/data/componentsData';
 import { ThemeContext } from '../../../../context/ThemeContext';
 
 import styles from './NavLinks.module.scss';

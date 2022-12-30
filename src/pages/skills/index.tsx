@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-import { skills } from '../../../data/data';
+import { skills } from '../../../public/data/componentsData';
 
 import styles from './Skills.module.scss';
 
