@@ -1,4 +1,4 @@
-import { IFooterLink, INavLink } from '../models';
+import { IFooterLink, INavLink } from '../../models';
 
 export const navLinks: INavLink[] = [
 	{ id: 1, title: 'Projects', path: '/' },
