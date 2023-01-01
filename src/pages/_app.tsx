@@ -2,19 +2,25 @@ import { AppProps } from 'next/app';
 import { NextPageContext } from 'next';
 
 import { ThemeProvider } from '../context/ThemeContext';
+import { IProjects } from '../../models';
 import Layout from '../components/Layout/Layout';
 import '../styles/reset.css';
 import '../styles/global.scss';
 
-type serverProps = {
+type contextType = {
 	ctx: NextPageContext;
 }
 
+type initialPropsType = {
+	data: IProjects[],
+	isDarkMode: boolean,
+}
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
-	const { pathFromServer, isDarkMode } = pageProps;
+	const { data, isDarkMode }: initialPropsType = pageProps;
 	
 	return (
-		<ThemeProvider isDarkMode={isDarkMode} pathFromServer={pathFromServer}>
+		<ThemeProvider data={data} isDarkMode={isDarkMode}>
 			<Layout>
 				<Component {...pageProps} />
 			</Layout>
@@ -22,25 +28,33 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 	);
 };
 
-MyApp.getInitialProps = async ({ ctx }: serverProps) => {
+MyApp.getInitialProps = async ({ ctx }: contextType) => {
 	try {
+		if (!ctx.req) return {
+			pageProps: null,
+		};
+		
 		const cookie = ctx?.req?.headers?.cookie?.match(/isDarkMode=(\w+);?/)?.[1];
-		const pathFromServer = ctx.pathname;
+		
+		const host = ctx?.req?.headers.host;
+		const url = `${host === 'localhost:3000' ? 'http' : 'https'}://${host}/api/projects`;
+		const res = await fetch(url);
+		const data: IProjects[] = await res.json();
 		
 		const isDarkMode =
-			cookie === undefined
+			cookie === undefined || cookie === 'undefined'
 				? false
 				: JSON.parse(cookie);
 		
 		return {
 			pageProps: {
-				pathFromServer,
+				data,
 				isDarkMode,
 			},
 		};
-	} catch {
+	} catch(error) {
 		return {
-			pageProps: { null: null },
+			pageProps: { error },
 		};
 	}
 };
