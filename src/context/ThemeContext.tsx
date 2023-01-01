@@ -1,31 +1,34 @@
-import React, { createContext, FC, ReactNode, useEffect, useState } from 'react';
+import React, { createContext, FC, ReactNode, useEffect, useRef, useState } from 'react';
 import Cookies from 'universal-cookie';
 import useIsomorphicLayoutEffect from 'use-isomorphic-layout-effect';
 
-type ThemeProviderProps = {
+import { IProjects } from '../../models';
+
+type providerPropsType = {
 	children: ReactNode,
+	data: IProjects[],
 	isDarkMode: boolean,
-	pathFromServer: string
 }
 
-type ValueType = {
-	isDarkTheme: boolean;
-	setIsDarkTheme: React.Dispatch<React.SetStateAction<boolean>>
-	pathFromServer: string,
+type valueType = {
+	projects: IProjects[],
+	isDarkTheme: boolean,
+	setIsDarkTheme: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
-export const ThemeContext = createContext<ValueType>({} as ValueType);
+export const ThemeContext = createContext<valueType>({} as valueType);
 
-const ThemeProvider: FC<ThemeProviderProps> = ({ children, isDarkMode, pathFromServer }) => {
+const ThemeProvider:FC<providerPropsType> = ({ children, data, isDarkMode }) => {
 	const [isDarkTheme, setIsDarkTheme] = useState<boolean>(isDarkMode);
+	const dataRef = useRef(data);
+	const projects = dataRef.current;
+	const cookies = new Cookies();
 	
-	const value: ValueType = {
+	const value: valueType = {
+		projects,
 		isDarkTheme,
 		setIsDarkTheme,
-		pathFromServer,
 	};
-	
-	const cookies = new Cookies();
 	
 	const sendCookieTheme = (value: boolean) => {
 		cookies.set('isDarkMode', value, {

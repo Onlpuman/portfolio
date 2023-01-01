@@ -1,24 +1,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import {useContext } from 'react';
-import { GetServerSideProps } from 'next';
+import { useContext } from 'react';
+import { useRouter } from 'next/router';
 import clsx from 'clsx';
 
-import { IProjects } from '../../../models';
 import { ThemeContext } from '../../context/ThemeContext';
 
 import styles from './Project.module.scss';
 
 import type { NextPage } from 'next';
 
-type projectProps = {
-	project: IProjects,
-}
-
-const Project:NextPage<projectProps> = ({ project }) => {
-	const { isDarkTheme } = useContext(ThemeContext);
-	if (!project) return null;
-	const { name, title, skills, img, url } = project;
+const Project:NextPage = () => {
+	const { projects, isDarkTheme } = useContext(ThemeContext);
+	const router = useRouter();
+	const projectName = router.query?.project;
+	
+	if (!projects) return null;
+	
+	const currentPageID = projects.findIndex((el) => el.name === projectName);
+	const { name, title, skills, img, url } = projects[currentPageID];
+	
 	const styleImgCover = name + '-img-cover';
 	
 	return (
@@ -27,29 +28,29 @@ const Project:NextPage<projectProps> = ({ project }) => {
 				<div className={styles.details}>
 					
 					<h1 className={styles.title}>{title}</h1>
-					
-					{img.map(el => (
-						<div
-							className={
-								clsx({
-									[styles.cover]: true,
-									[styles[styleImgCover]]: isDarkTheme,
-								})
-							}
-							key={el}
-						>
-							<Image
-								className={styles.img}
-								src={el}
-								alt="Project image"
-								priority={true}
-								quality={85}
-								width={776}
-								height={388}
-							/>
-						</div>
-					))}
-					
+					{
+						img.map((el) => (
+							<div
+								className={
+									clsx({
+										[styles.cover]: true,
+										[styles[styleImgCover]]: isDarkTheme,
+									})
+								}
+								key={el}
+							>
+								<Image
+									className={styles.img}
+									src={el}
+									alt="Project image"
+									priority={true}
+									quality={85}
+									width={776}
+									height={388}
+								/>
+							</div>
+						))
+					}
 					<div className={styles.desc}>
 						<p>Skills: {skills}</p>
 					</div>
@@ -62,24 +63,6 @@ const Project:NextPage<projectProps> = ({ project }) => {
 			</div>
 		</section>
 	);
-};
-
-export const getServerSideProps:GetServerSideProps = async (ctx) => {
-	try {
-		const { req, params } = ctx;
-		const currentPath = params?.project;
-		const url = `${req?.headers.host === 'localhost:3000' ? 'http' : 'https'}://${req?.headers.host}/api/projects`;
-		
-		const res = await fetch(url);
-		const data: IProjects[] = await res.json();
-		const currentProject = data.find((el) => el.name === currentPath);
-	
-		return {
-			props: { project: currentProject },
-		};
-	} catch (error) {
-		return { notFound: true };
-	}
 };
 
 export default Project;
