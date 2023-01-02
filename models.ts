@@ -19,4 +19,5 @@ export interface IProjects {
 	path: string,
 	img: string[],
 	url: string,
+	blurImg: string,
 }

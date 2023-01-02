@@ -18,7 +18,7 @@ const Project:NextPage = () => {
 	if (!projects) return null;
 	
 	const currentPageID = projects.findIndex((el) => el.name === projectName);
-	const { name, title, skills, img, url } = projects[currentPageID];
+	const { name, title, skills, img, url, blurImg } = projects[currentPageID];
 	
 	const styleImgCover = name + '-img-cover';
 	
@@ -43,10 +43,11 @@ const Project:NextPage = () => {
 									className={styles.img}
 									src={el}
 									alt="Project image"
-									priority={true}
+									placeholder="blur"
 									quality={85}
 									width={776}
 									height={388}
+									blurDataURL={blurImg}
 								/>
 							</div>
 						))
