@@ -47,6 +47,7 @@ const Project:NextPage = () => {
 									quality={85}
 									width={776}
 									height={388}
+									sizes="(max-width: 828px) 80vw, 50vw"
 									blurDataURL={blurImg}
 								/>
 							</div>
