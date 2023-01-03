@@ -4,14 +4,14 @@ import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
 
-import { ThemeContext } from '../../context/ThemeContext';
+import { AppContext } from '../../context/AppContext';
 
 import styles from './Project.module.scss';
 
 import type { NextPage } from 'next';
 
 const Project:NextPage = () => {
-	const { projects, isDarkTheme } = useContext(ThemeContext);
+	const { projects, isDarkTheme } = useContext(AppContext);
 	const router = useRouter();
 	const projectName = router.query?.project;
 	

@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app';
 import { NextPageContext } from 'next';
 
-import { ThemeProvider } from '../context/ThemeContext';
+import { AppProvider } from '../context/AppContext';
 import { IProjects } from '../../models';
 import Layout from '../components/Layout/Layout';
 import '../styles/reset.css';
@@ -20,11 +20,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 	const { data, isDarkMode }: initialPropsType = pageProps;
 	
 	return (
-		<ThemeProvider data={data} isDarkMode={isDarkMode}>
+		<AppProvider data={data} isDarkMode={isDarkMode}>
 			<Layout>
 				<Component {...pageProps} />
 			</Layout>
-		</ThemeProvider>
+		</AppProvider>
 	);
 };
 

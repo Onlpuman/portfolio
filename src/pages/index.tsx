@@ -1,14 +1,14 @@
 import { NextPage } from 'next';
 import {useContext} from 'react';
 
-import { ThemeContext } from '../context/ThemeContext';
+import { AppContext } from '../context/AppContext';
 import Header from '../components/Header/Header';
 import Card from '../components/Projects/Card/Card';
 
 import styles from './Projects.module.scss';
 
 const Projects:NextPage = () => {
-	const { projects } = useContext(ThemeContext);
+	const { projects } = useContext(AppContext);
 	
 	if (!projects) return null ;
 	

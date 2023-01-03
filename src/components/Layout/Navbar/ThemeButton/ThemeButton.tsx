@@ -2,12 +2,12 @@ import Image from 'next/image';
 import clsx from 'clsx';
 import { FC, useContext } from 'react';
 
-import { ThemeContext } from '../../../../context/ThemeContext';
+import { AppContext } from '../../../../context/AppContext';
 
 import styles from './ThemeButton.module.scss';
 
 const ThemeButton:FC = () => {
-	const { isDarkTheme, setIsDarkTheme } = useContext(ThemeContext);
+	const { isDarkTheme, setIsDarkTheme } = useContext(AppContext);
 	
 	return (
 		<button

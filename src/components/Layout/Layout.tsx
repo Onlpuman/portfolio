@@ -3,7 +3,7 @@ import { FC, ReactNode, useContext } from 'react';
 import clsx from 'clsx';
 
 import { dm_sans } from '../../styles/fonts';
-import { ThemeContext } from '../../context/ThemeContext';
+import { AppContext } from '../../context/AppContext';
 
 import { Navbar } from './Navbar/Navbar';
 import Footer from './Footer/Footer';
@@ -14,7 +14,7 @@ type layoutProps = {
 }
 
 const Layout:FC<layoutProps> = ({ children }) => {
-	const { isDarkTheme } = useContext(ThemeContext);
+	const { isDarkTheme } = useContext(AppContext);
 	
 	return (
 		<>

@@ -16,9 +16,9 @@ type valueType = {
 	setIsDarkTheme: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
-export const ThemeContext = createContext<valueType>({} as valueType);
+export const AppContext = createContext<valueType>({} as valueType);
 
-const ThemeProvider:FC<providerPropsType> = ({ children, data, isDarkMode }) => {
+const AppProvider:FC<providerPropsType> = ({ children, data, isDarkMode }) => {
 	const [isDarkTheme, setIsDarkTheme] = useState<boolean>(isDarkMode);
 	const dataRef = useRef(data);
 	const projects = dataRef.current;
@@ -57,10 +57,10 @@ const ThemeProvider:FC<providerPropsType> = ({ children, data, isDarkMode }) => 
 	}, [isDarkTheme]);
 	
 	return (
-		<ThemeContext.Provider value={value}>
+		<AppContext.Provider value={value}>
 			{children}
-		</ThemeContext.Provider>
+		</AppContext.Provider>
 	);
 };
 
-export {ThemeProvider};
+export {AppProvider};
