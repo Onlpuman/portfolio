@@ -42,13 +42,13 @@ const Project:NextPage = () => {
 								<Image
 									className={styles.img}
 									src={el}
-									alt="Project image"
 									placeholder="blur"
 									quality={85}
 									width={776}
 									height={388}
 									sizes="(max-width: 828px) 80vw, 50vw"
 									blurDataURL={blurImg}
+									alt="Project image"
 								/>
 							</div>
 						))

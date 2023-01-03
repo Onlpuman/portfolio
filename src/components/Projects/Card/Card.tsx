@@ -11,7 +11,7 @@ type cardProps = {
 }
 
 const Card:FC<cardProps> = ({ project }) => {
-	const { name, description, path, img } = project || {};
+	const { name, description, path, img, blurImg } = project;
 	const styleImgCover = name + '-img-cover';
 	
 	return (
@@ -21,9 +21,11 @@ const Card:FC<cardProps> = ({ project }) => {
 					<Image
 						className={styles.img}
 						src={img[0]}
-						priority={true}
+						placeholder="blur"
+						quality={85}
 						width={324}
 						height={160}
+						blurDataURL={blurImg}
 						alt="Card img"
 					/>
 				</div>
